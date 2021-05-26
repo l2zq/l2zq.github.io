@@ -1,25 +1,63 @@
 <!DOCTYPE html>
-<html>
-  <meta charset="utf-8">
+<html lang="eo">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Juliamo</title>
   <style>
-  @font-face {
-    font-family: "Juliamo";
-    src: url("https://dl.dropboxusercontent.com/s/5me44aeb19mxm6e/juliamo.woff"),
-         url("juliamo-print.ttf");
-  }
-  body {
-    font-family: "Juliamo";
-  }
-  textarea {
-    width: 90%;
-    height: 100vh;
-    font-family: inherit;
-    font-size: large;
-    padding: 1em;
-  }
+    @font-face {
+      font-family: "juliamo-ttf";
+      src:  url("juliamo-print.ttf"),   /* Github First */
+            url("https://dl.dropboxusercontent.com/s/5me44aeb19mxm6e/juliamo.woff");
+    }
+    html {
+      font-family: monospace;
+    }
+    body {
+      margin: auto;
+      min-width: 50%;
+      max-width: 40em;
+      padding: 0.5em;
+      border: 1px solid;
+    }
+    .juliamo-text {
+      font-family: "juliamo-print", "juliamo-ttf"; /* System First */
+    }
+    .inline-blk {
+      display: inline-block;
+    }
+    #banner {
+      margin-bottom: 0.5em;
+    }
+    #switchbtn {
+      width: fit-content;
+      height: 2em;
+    }
+    #juliamo_textarea {
+      padding: 0px;
+      margin: 0px;
+      border: 1px solid;
+      resize: vertical;
+      width: 100%;
+      min-height: 16em;
+    }
   </style>
   <body>
-    <textarea>Juliamo</textarea>
-    <a href="http://sukerasparo.com/amrilato/sp004/font.html">SukeraSparo</a>
+    <div id="banner">
+      <h1 class="juliamo-text inline-blk" style="margin: 0px">Juliamo</h1>
+      <a class="juliamo-text" href="http://sukerasparo.com/amrilato/sp004/font.html">SukeraSparo</a>
+      (non-HTTPS)
+      <input id="switchbtn" type="button" class="juliamo-text j_sw" value="Juliamo" onclick="switch_font()" />
+    </div>
+    <textarea id="juliamo_textarea" class="juliamo-text j_sw" placeholder="Rin: Mi soifas vin, Ruka!"></textarea>
+    <script type="text/javascript">
+      let isjul = true;
+      let items = document.querySelectorAll(".j_sw");
+      function switch_font() {
+        isjul ^= true;
+        for (let i = 0; i < items.length; i++)
+          if (isjul) items[i].classList.add("juliamo-text");
+          else items[i].classList.remove("juliamo-text");
+      }
+    </script>
   </body>
 </html>
